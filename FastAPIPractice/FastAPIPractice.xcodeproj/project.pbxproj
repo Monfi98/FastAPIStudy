@@ -11,6 +11,7 @@
 		359B641B2C1F16280085A67A /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359B641A2C1F16280085A67A /* RegisterView.swift */; };
 		359B641D2C1F16290085A67A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 359B641C2C1F16290085A67A /* Assets.xcassets */; };
 		359B64202C1F16290085A67A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 359B641F2C1F16290085A67A /* Preview Assets.xcassets */; };
+		35E4EBFD2C1F20E0006EA9A3 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E4EBFC2C1F20E0006EA9A3 /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		359B641A2C1F16280085A67A /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		359B641C2C1F16290085A67A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		359B641F2C1F16290085A67A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		35E4EBFC2C1F20E0006EA9A3 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			children = (
 				359B64182C1F16280085A67A /* FastAPIPracticeApp.swift */,
 				359B641A2C1F16280085A67A /* RegisterView.swift */,
+				35E4EBFC2C1F20E0006EA9A3 /* NetworkManager.swift */,
 				359B641C2C1F16290085A67A /* Assets.xcassets */,
 				359B641E2C1F16290085A67A /* Preview Content */,
 			);
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35E4EBFD2C1F20E0006EA9A3 /* NetworkManager.swift in Sources */,
 				359B641B2C1F16280085A67A /* RegisterView.swift in Sources */,
 				359B64192C1F16280085A67A /* FastAPIPracticeApp.swift in Sources */,
 			);

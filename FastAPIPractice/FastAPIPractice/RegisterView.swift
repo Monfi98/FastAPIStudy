@@ -12,10 +12,9 @@ struct RegisterView: View {
     @State private var name: String = ""
     @State private var id: String = ""
     @State private var password: String = ""
+    @State private var errorMessage: String = ""
     
-    @State private var showingWarningAlert: Bool = false
-    @State private var showingIdExistsAlert: Bool = false
-    @State private var showingSuccessAlert: Bool = false
+    @State private var showingAlert: Bool = false
     
     var body: some View {
         VStack {
@@ -43,9 +42,9 @@ struct RegisterView: View {
             
             Button(action: {
                 if name.isEmpty || id.isEmpty || password.isEmpty {
-                    showingWarningAlert = true
+                    showingAlert = true
                 } else {
-                    // Handle login action
+                    registerUser(user: User(username: name, id: id, password: password))
                 }
             }) {
                 Text("회원가입")
@@ -57,19 +56,10 @@ struct RegisterView: View {
                     .cornerRadius(15.0)
             }
             .padding(.top, 50)
-            .alert(isPresented: $showingWarningAlert) {
+            .alert(isPresented: $showingAlert) {
+                
                 Alert(title: Text("경고"),
                       message: Text("텍스트 필드에 빈 값이 있습니다."),
-                      dismissButton: .default(Text("확인")))
-            }
-            .alert(isPresented: $showingIdExistsAlert) {
-                Alert(title: Text("경고"),
-                      message: Text("중복된 아이디가 존재합니다."),
-                      dismissButton: .default(Text("확인")))
-            }
-            .alert(isPresented: $showingSuccessAlert) {
-                Alert(title: Text("성공"),
-                      message: Text("회원가입에 성공했습니다."),
                       dismissButton: .default(Text("확인")))
             }
             
@@ -81,7 +71,18 @@ struct RegisterView: View {
 
 // MARK: - Extension
 extension RegisterView {
-    
+    func registerUser(user: User) {
+        NetworkManager.shared.registerUser(user: user) { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let message):
+                    print("회원가입 성공!")
+                case .failure(let error):
+                    print("에러 --> \(error.localizedDescription)")
+                }
+            }
+        }
+    }
 }
 
 #Preview {
