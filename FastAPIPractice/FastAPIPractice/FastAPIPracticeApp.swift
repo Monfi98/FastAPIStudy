@@ -11,7 +11,7 @@ import SwiftUI
 struct FastAPIPracticeApp: App {
     var body: some Scene {
         WindowGroup {
-            RegisterView()
+            MainTabView()
         }
     }
 }

@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct MainTabView: View {
+    @State var path: [NavigationDestination] = []
+    @State var loginStatus = false
+    
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $path) {
             TabView {
                 HomeView()
                     .tabItem {
@@ -29,11 +32,27 @@ struct MainTabView: View {
                         Text("Settings")
                     }
             }
+            .navigationDestination(for: NavigationDestination.self) { destination in
+                            switch destination {
+                            case .loginView:
+                                LoginView(path: $path)
+                            case .registerView:
+                                RegisterView(path: $path)
+                            }
+                        }
+        }
+        .onAppear() {
+            if !loginStatus {
+                path.append(NavigationDestination.loginView)
+            }
         }
     }
 }
 
-
+enum NavigationDestination: String {
+    case loginView
+    case registerView
+}
 
 #Preview {
     MainTabView()

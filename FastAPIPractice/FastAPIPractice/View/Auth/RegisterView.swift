@@ -9,6 +9,7 @@ import SwiftUI
 
 struct RegisterView: View {
     
+    @Binding var path: [NavigationDestination]
     @State private var name: String = ""
     @State private var id: String = ""
     @State private var password: String = ""
@@ -18,7 +19,7 @@ struct RegisterView: View {
     
     var body: some View {
         VStack {
-            Spacer()
+            Spacer().frame(height: 100)
             
             VStack(alignment: .leading, spacing: 15) {
                 TextField("username", text: $name)
@@ -86,5 +87,5 @@ extension RegisterView {
 }
 
 #Preview {
-    RegisterView()
+    RegisterView(path: .constant([]))
 }

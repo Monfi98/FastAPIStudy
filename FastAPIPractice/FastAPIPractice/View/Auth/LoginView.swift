@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LoginView: View {
+    @Binding var path: [NavigationDestination]
     @State private var username: String = ""
     @State private var password: String = ""
     @State private var showingAlert = false
@@ -15,10 +16,10 @@ struct LoginView: View {
     var body: some View {
         VStack {
             
-            Spacer().frame(height: 100)
+            Spacer().frame(height: 200)
             
             // Logo or Title
-            Text("Login")
+            Text("Login View")
                 .font(.largeTitle)
                 .fontWeight(.bold)
                 .padding(.bottom, 40)
@@ -62,18 +63,21 @@ struct LoginView: View {
             HStack {
                 Text("Don't have an account?")
                 Button(action: {
-                    // Navigate to sign up view
+                    path.append(NavigationDestination.registerView)
                 }) {
                     Text("Sign Up")
                         .fontWeight(.bold)
                         .foregroundColor(.blue)
                 }
             }
+            Spacer().frame(height: 20)
         }
         .padding(.horizontal, 16)
+        .ignoresSafeArea()
+        .navigationBarBackButtonHidden()
     }
 }
 
 #Preview {
-    LoginView()
+    LoginView(path: .constant([]))
 }
