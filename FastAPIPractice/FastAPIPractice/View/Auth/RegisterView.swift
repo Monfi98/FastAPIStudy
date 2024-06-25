@@ -21,19 +21,19 @@ struct RegisterView: View {
             Spacer()
             
             VStack(alignment: .leading, spacing: 15) {
-                TextField("이름", text: $name)
+                TextField("username", text: $name)
                     .padding()
                     .background(Color.gray.opacity(0.2))
                     .cornerRadius(5.0)
                     .autocapitalization(.none)
                 
-                TextField("아이디", text: $id)
+                TextField("id", text: $id)
                     .padding()
                     .background(Color.gray.opacity(0.2))
                     .cornerRadius(5.0)
                     .autocapitalization(.none)
                 
-                SecureField("비밀번호", text: $password)
+                SecureField("password", text: $password)
                     .padding()
                     .background(Color.gray.opacity(0.2))
                     .cornerRadius(5.0)
