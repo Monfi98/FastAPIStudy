@@ -9,40 +9,39 @@ import SwiftUI
 
 struct LoginView: View {
     @Binding var path: [NavigationDestination]
-    @State private var username: String = ""
+    @State private var id: String = ""
     @State private var password: String = ""
     @State private var showingAlert = false
-
+    
     var body: some View {
         VStack {
             
             Spacer().frame(height: 200)
             
-            // Logo or Title
             Text("Login View")
                 .font(.largeTitle)
                 .fontWeight(.bold)
                 .padding(.bottom, 40)
             
-            // Username Field
-            TextField("Username", text: $username)
+            TextField("Username", text: $id)
                 .padding()
                 .background(Color(.secondarySystemBackground))
                 .cornerRadius(5.0)
                 .padding(.bottom, 20)
+                .autocapitalization(.none)
             
-            // Password Field
             SecureField("Password", text: $password)
                 .padding()
                 .background(Color(.secondarySystemBackground))
                 .cornerRadius(5.0)
                 .padding(.bottom, 20)
+                .autocapitalization(.none)
             
-            // Login Button
             Button(action: {
-                // Perform login action here
-                if username.isEmpty || password.isEmpty {
+                if id.isEmpty || password.isEmpty {
                     showingAlert = true
+                } else {
+                    loginButtonTapped(id: id, password: password)
                 }
             }) {
                 Text("Login")
@@ -59,7 +58,6 @@ struct LoginView: View {
             
             Spacer()
             
-            // Sign Up Button
             HStack {
                 Text("Don't have an account?")
                 Button(action: {
@@ -75,6 +73,26 @@ struct LoginView: View {
         .padding(.horizontal, 16)
         .ignoresSafeArea()
         .navigationBarBackButtonHidden()
+    }
+}
+
+extension LoginView {
+    private func loginButtonTapped(id: String, password: String) {
+        NetworkManager.shared.session.request(NetworkRouter.login(id: id, password: password))
+            .response { response in
+                guard let statusCode = response.response?.statusCode else { return }
+                switch statusCode {
+                case 200:
+                    print("Login Success")
+                    path.removeLast()
+                case 400:
+                    print("Invalid credentials")
+                case 422:
+                    print("Validation Error")
+                default:
+                    print("Other status code ->\(statusCode)")
+                }
+            }
     }
 }
 

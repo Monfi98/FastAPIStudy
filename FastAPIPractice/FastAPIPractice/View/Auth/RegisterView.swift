@@ -45,7 +45,7 @@ struct RegisterView: View {
                 if name.isEmpty || id.isEmpty || password.isEmpty {
                     showingAlert = true
                 } else {
-                    registerUser(user: User(username: name, id: id, password: password))
+                    registerButtonTapped(username: self.name, id: self.id, password: self.password)
                 }
             }) {
                 Text("회원가입")
@@ -72,17 +72,22 @@ struct RegisterView: View {
 
 // MARK: - Extension
 extension RegisterView {
-    func registerUser(user: User) {
-        NetworkManager.shared.registerUser(user: user) { result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let message):
-                    print("회원가입 성공!")
-                case .failure(let error):
-                    print("에러 --> \(error.localizedDescription)")
+    func registerButtonTapped(username: String, id: String, password: String) {
+        NetworkManager.shared.session.request(NetworkRouter.registerUser(username: username, id: id, password: password))
+            .response { response in
+                guard let statusCode = response.response?.statusCode else { return }
+                switch statusCode {
+                case 200:
+                    print("Successful Response")
+                    path.removeLast()
+                case 400:
+                    print("ID already exists")
+                case 422:
+                    print("Validation Error")
+                default:
+                    print("Other status code ->\(statusCode)")
                 }
             }
-        }
     }
 }
 
