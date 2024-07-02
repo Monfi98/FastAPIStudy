@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @Binding var path: [NavigationDestination]
     var body: some View {
         ZStack {
             Color(.secondarySystemBackground)
@@ -19,5 +20,5 @@ struct SettingsView: View {
 }
 
 #Preview {
-    SettingsView()
+    SettingsView(path: .constant([]))
 }

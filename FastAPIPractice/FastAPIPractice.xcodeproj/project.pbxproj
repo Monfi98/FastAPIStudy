@@ -17,6 +17,9 @@
 		3526F0E92C2AA4AB00B4D71F /* MyMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3526F0E82C2AA4AB00B4D71F /* MyMonitor.swift */; };
 		3526F0EB2C2AA59E00B4D71F /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3526F0EA2C2AA59E00B4D71F /* API.swift */; };
 		3526F0ED2C2AA6BD00B4D71F /* NetworkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3526F0EC2C2AA6BD00B4D71F /* NetworkRouter.swift */; };
+		3564EEE82C342FA800948503 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3564EEE72C342FA800948503 /* String+Ext.swift */; };
+		3591FC6E2C33949200F27A19 /* PostEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3591FC6D2C33949200F27A19 /* PostEditView.swift */; };
+		3591FC722C342B3000F27A19 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3591FC712C342B3000F27A19 /* Post.swift */; };
 		359B64192C1F16280085A67A /* FastAPIPracticeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359B64182C1F16280085A67A /* FastAPIPracticeApp.swift */; };
 		359B641D2C1F16290085A67A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 359B641C2C1F16290085A67A /* Assets.xcassets */; };
 		359B64202C1F16290085A67A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 359B641F2C1F16290085A67A /* Preview Assets.xcassets */; };
@@ -34,6 +37,9 @@
 		3526F0EA2C2AA59E00B4D71F /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		3526F0EC2C2AA6BD00B4D71F /* NetworkRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRouter.swift; sourceTree = "<group>"; };
 		3526F0EE2C2AB02900B4D71F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		3564EEE72C342FA800948503 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
+		3591FC6D2C33949200F27A19 /* PostEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEditView.swift; sourceTree = "<group>"; };
+		3591FC712C342B3000F27A19 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		359B64152C1F16280085A67A /* FastAPIPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FastAPIPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		359B64182C1F16280085A67A /* FastAPIPracticeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastAPIPracticeApp.swift; sourceTree = "<group>"; };
 		359B641C2C1F16290085A67A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -56,6 +62,7 @@
 		3526F0D72C2A519F00B4D71F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				3591FC6F2C33949B00F27A19 /* Sub */,
 				3526F0D92C2A51DE00B4D71F /* Main */,
 				3526F0D82C2A51B900B4D71F /* Auth */,
 			);
@@ -93,6 +100,30 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		3564EEE62C342F8800948503 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				3564EEE72C342FA800948503 /* String+Ext.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		3591FC6F2C33949B00F27A19 /* Sub */ = {
+			isa = PBXGroup;
+			children = (
+				3591FC6D2C33949200F27A19 /* PostEditView.swift */,
+			);
+			path = Sub;
+			sourceTree = "<group>";
+		};
+		3591FC702C342B2200F27A19 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3591FC712C342B3000F27A19 /* Post.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		359B640C2C1F16280085A67A = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +143,8 @@
 		359B64172C1F16280085A67A /* FastAPIPractice */ = {
 			isa = PBXGroup;
 			children = (
+				3564EEE62C342F8800948503 /* Extension */,
+				3591FC702C342B2200F27A19 /* Model */,
 				3526F0EE2C2AB02900B4D71F /* Info.plist */,
 				3526F0E72C2A80F300B4D71F /* Network */,
 				359B64182C1F16280085A67A /* FastAPIPracticeApp.swift */,
@@ -210,10 +243,13 @@
 				3526F0ED2C2AA6BD00B4D71F /* NetworkRouter.swift in Sources */,
 				3526F0E92C2AA4AB00B4D71F /* MyMonitor.swift in Sources */,
 				3526F0DF2C2A528E00B4D71F /* SettingsView.swift in Sources */,
+				3591FC722C342B3000F27A19 /* Post.swift in Sources */,
 				3526F0E12C2A577F00B4D71F /* LoginView.swift in Sources */,
 				3526F0EB2C2AA59E00B4D71F /* API.swift in Sources */,
 				3526F0DB2C2A51EE00B4D71F /* HomeView.swift in Sources */,
+				3564EEE82C342FA800948503 /* String+Ext.swift in Sources */,
 				3526F0D62C2A506E00B4D71F /* MainTabView.swift in Sources */,
+				3591FC6E2C33949200F27A19 /* PostEditView.swift in Sources */,
 				3526F0E32C2A57A400B4D71F /* RegisterView.swift in Sources */,
 				3526F0DD2C2A522500B4D71F /* ProfileView.swift in Sources */,
 				359B64192C1F16280085A67A /* FastAPIPracticeApp.swift in Sources */,

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ProfileView: View {
+    @Binding var path: [NavigationDestination]
     var body: some View {
         ZStack {
             Color(.secondarySystemBackground)
@@ -19,5 +20,5 @@ struct ProfileView: View {
 }
 
 #Preview {
-    ProfileView()
+    ProfileView(path: .constant([]))
 }

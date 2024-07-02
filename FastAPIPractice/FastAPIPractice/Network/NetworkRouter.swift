@@ -12,6 +12,8 @@ enum NetworkRouter: URLRequestConvertible {
     case checkId(id: String)
     case registerUser(username: String, id: String, password: String)
     case login(id: String, password: String)
+    case createPost(authorId: String, title: String, content: String)
+    case readAllPost
     
     var baseURL: URL {
         return URL(string: API.BASE_URL)!
@@ -25,6 +27,10 @@ enum NetworkRouter: URLRequestConvertible {
             return "/register/register_user"
         case .login:
             return "/auth/login"
+        case .createPost:
+            return "/board/create-post"
+        case .readAllPost:
+            return "/board/read-post"
         }
     }
     
@@ -36,6 +42,10 @@ enum NetworkRouter: URLRequestConvertible {
             return .post
         case .login:
             return .post
+        case .createPost:
+            return .post
+        case .readAllPost:
+            return .get
         }
     }
     
@@ -56,6 +66,16 @@ enum NetworkRouter: URLRequestConvertible {
             params["id"] = id
             params["password"] = password
             return params
+            
+        case let .createPost(authorId, title, content):
+            var params = Parameters()
+            params["author_id"] = authorId
+            params["title"] = title
+            params["content"] = content
+            return params
+        
+        case .readAllPost:
+            return nil
         }
     }
     

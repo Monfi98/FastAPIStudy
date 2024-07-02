@@ -8,25 +8,26 @@
 import SwiftUI
 
 struct MainTabView: View {
+    @AppStorage("UserID") var userId: String = ""
     @State var path: [NavigationDestination] = []
     @State var loginStatus = false
     
     var body: some View {
         NavigationStack(path: $path) {
             TabView {
-                HomeView()
+                HomeView(path: $path)
                     .tabItem {
                         Image(systemName: "house.fill")
                         Text("Home")
                     }
                 
-                ProfileView()
+                ProfileView(path: $path)
                     .tabItem {
                         Image(systemName: "person.fill")
                         Text("Profile")
                     }
                 
-                SettingsView()
+                SettingsView(path: $path)
                     .tabItem {
                         Image(systemName: "gearshape.fill")
                         Text("Settings")
@@ -35,9 +36,11 @@ struct MainTabView: View {
             .navigationDestination(for: NavigationDestination.self) { destination in
                             switch destination {
                             case .loginView:
-                                LoginView(path: $path)
+                                LoginView(userId: $userId, path: $path)
                             case .registerView:
                                 RegisterView(path: $path)
+                            case .postEditView:
+                                PostEditView(userId: $userId, path: $path)
                             }
                         }
         }
@@ -52,6 +55,7 @@ struct MainTabView: View {
 enum NavigationDestination: String {
     case loginView
     case registerView
+    case postEditView
 }
 
 #Preview {

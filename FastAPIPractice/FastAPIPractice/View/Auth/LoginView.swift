@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct LoginView: View {
+    @Binding var userId: String
     @Binding var path: [NavigationDestination]
+    
     @State private var id: String = ""
     @State private var password: String = ""
     @State private var showingAlert = false
@@ -84,6 +86,7 @@ extension LoginView {
                 switch statusCode {
                 case 200:
                     print("Login Success")
+                    self.userId = id
                     path.removeLast()
                 case 400:
                     print("Invalid credentials")
@@ -97,5 +100,5 @@ extension LoginView {
 }
 
 #Preview {
-    LoginView(path: .constant([]))
+    LoginView(userId: .constant(""), path: .constant([]))
 }
